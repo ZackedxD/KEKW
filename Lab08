@@ -2,9 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.util.*;
-import java.util.random.RandomGenerator;
-import java.util.InputMismatchException;
-
 public class KEKW {
     public static void main(String[] args) throws FileNotFoundException {
         int x = countNums("Lab08.txt");
@@ -30,9 +27,9 @@ public class KEKW {
 
     private static int countNums(String filename) throws FileNotFoundException {
         Scanner fileScan = new Scanner(new File(filename));
-        int count = 96;
-        while (fileScan.hasNextDouble()) {
-            double k = fileScan.nextDouble();
+        int count = 0;
+        while (fileScan.hasNext()) {
+            Object k = fileScan.next();
             count++;
         }
         return count;
@@ -75,7 +72,7 @@ public class KEKW {
     }
 
     private static void average(Object[] x) {
-        double maxValue=0;
+        double maxValue=Double.valueOf(x[0].toString());
         for(int i=1;i <x.length;i++){
             if(Double.valueOf(x[i].toString()) > maxValue){
                 maxValue = Double.valueOf(x[i].toString());
